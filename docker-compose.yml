@@ -1,0 +1,43 @@
+version: '3.1'
+
+services:
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - 27017:27017
+    networks:
+      - backend
+  mongoclient:
+    image: mongoclient/mongoclient
+    ports:
+      - 3000:3000
+    networks:
+      - backend
+  rabbitmq:
+    restart: always
+    image: rabbitmq:3.7.9-management
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=rabbit
+      - RABBITMQ_DEFAULT_PASS=password
+    networks:
+      - backend
+  redis:
+    restart: always
+    image: redis:latest
+    ports:
+      - 6379:6379
+    networks: 
+      - backend
+
+networks:
+  backend:
+    driver: bridge
+  frontend:
+    driver: bridge
