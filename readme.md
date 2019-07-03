@@ -14,7 +14,7 @@ If you like the project, please give a star!
 ## Technologies implemented: (Will be update continuously)
 - Nodejs (v10.11)
 - Docker (18.07+)
-- .Net Core (3.0 preview)
+- .Net Core (3.0.100-preview6-012264)
 -
 -
 
